@@ -93,14 +93,13 @@
 			if(self::$parametresBdd == null) {
 				if(self::setEnvironnement() == 'dev')
 					$fichier = "../app/dev.ini";
-				elseif (self::setEnvironnement() == 'prod')
-					$fichier = "../app/prod.ini";
 				else
-					throw new Exception("Mauvais paramètre d'environnement !");
+					$fichier = "../app/prod.ini";
 				
 				if(file_exists($fichier))
 					self::$parametresBdd = parse_ini_file($fichier);
-				else throw new Exception("Aucune fichier de configuration trouvé !");
+				else
+					throw new Exception("Aucune fichier de configuration trouvé !");
 			}
 			
 			return self::$parametresBdd;
