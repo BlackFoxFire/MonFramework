@@ -24,7 +24,7 @@
 		private static $parametresBdd;
 		
 		public static function getConfig($config, $valeurParDefaut) {
-			if(isset(self::$config['app'][$config])) {
+			if(isset(self::loadConfig()['app'][$config])) {
 				return self::$config['app'][$config];
 			}
 			
@@ -33,11 +33,7 @@
 		
 		// Vérifie si un module est présent
 		public static function moduleExiste($module) {
-			if(is_null(self::$config))
-				self::loadConfig();
-			
-			// foreach(self::$config[self::setEnvironnement()] as $key => $valeur) {
-			foreach(self::$config[self::$environnement] as $key => $valeur) {
+			foreach(self::loadConfig()[self::$environnement] as $key => $valeur) {
 				if(strcasecmp($key, $module) == 0)
 					return true;
 			}
@@ -47,14 +43,14 @@
 		
 		// Routourne le module par defaut
 		public static function moduleParDefaut() {
-			if(is_null(self::$config))
-				self::loadConfig();
+			if(isset(self::loadConfig()[self::$environnement])) {
+				if($module = array_search('defaut', self::$config[self::$environnement]))
+					return $module;
+				else
+					throw new Exception("Aucun module n'est marqué par defaut.");
+			}
 			
-			// if($module = array_search('defaut', self::$config[self::setEnvironnement()]))
-			if($module = array_search('defaut', self::$config[self::$environnement]))
-				return $module;
-			else
-				throw new Exception("Aucun module n'est marqué par defaut.");
+			throw new Exception("Section [" . self::$environnement . "] absente du fichier de configuration 'app.ini'.");
 		}
 		
 		// Charge le fichier des modules autorisés/disponibles
