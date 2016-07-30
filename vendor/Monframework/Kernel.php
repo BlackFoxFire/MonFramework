@@ -45,16 +45,11 @@
 		// Mofifie et retoune l'environnement de travail
 		private static function setEnvironnement($env = null) {
 			if(!is_null($env)) {
-				if($env == 'prod') {
+				if($env == 'prod')
 					self::$environnement = $env;
-				}
-				else {
-					throw new Exception("Paramètre d'environnement non reconnu : '$env'");
-				}
 			}
-			else {
-				return self::$environnement;
-			}
+			
+			return self::$environnement;
 		}
 		
 	}
