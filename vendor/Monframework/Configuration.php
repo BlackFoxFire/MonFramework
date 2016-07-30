@@ -23,15 +23,12 @@
 		// Tableau des paramètres de la base de données
 		private static $parametresBdd;
 		
-		public static function getConfig($config) {
-			if(is_null(self::$config))
-				self::loadConfig();
-			
+		public static function getConfig($config, $valeurParDefaut) {
 			if(isset(self::$config['app'][$config])) {
 				return self::$config['app'][$config];
 			}
 			
-			throw new Exception("Mauvaise configuration du fichier 'app.ini'.");
+			return $valeurParDefaut;
 		}
 		
 		// Vérifie si un module est présent
@@ -68,6 +65,7 @@
 				self::$config = parse_ini_file($fichier, true, INI_SCANNER_RAW);
 			else
 				// exit("Fichier de configuration manquant : '" . basename($fichier) . "'.");
+				throw new Exception("Fichier de configuration manquant : '" . basename($fichier) . "'.");
 			
 			return self::$config;
 		}

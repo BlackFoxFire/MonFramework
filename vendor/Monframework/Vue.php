@@ -39,13 +39,11 @@
 		
 		// Génère et affiche la vue en utilisant le moteur de template
 		public function render($donnees) {
-			$donnees['racineWeb'] = Configuration::getConfig('appDir');
-			
 			$this->template->load($this->fichierVue);
-			
-			$donnees['titrePrincipale'] = Configuration::getConfig('app');
 			$donnees['contenu'] = $this->template->render($donnees);
 			
+			$donnees['title'] = Configuration::getConfig('appTitle', "");
+			$donnees['appDir'] = Configuration::getConfig('appDir', '/');
 			$this->template->load("gabarit.html", false);
 			
 			echo $this->template->render($donnees);
