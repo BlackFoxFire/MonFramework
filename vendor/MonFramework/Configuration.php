@@ -91,7 +91,7 @@
 			}*/
 			
 			if(self::$parametresBdd == null) {
-				if(self::setEnvironnement() == 'dev')
+				if(self::$environnement == 'dev')
 					$fichier = "../app/dev.ini";
 				else
 					$fichier = "../app/prod.ini";

@@ -12,7 +12,7 @@
 	// use BlackFox\MonFramework\Kernel;
 	
 	// Charge la fonction d'autochargement des classes du framework
-	require_once('../vendor/Monframework/AutoLoad.php');
+	require_once('../vendor/MonFramework/AutoLoad.php');
 	
 	// Chargement du coeur
 	$kernel = new Kernel();
