@@ -19,12 +19,20 @@
 		// Requete http
 		protected $requete;
 		
+		// Objet de la session
+		protected $session;
+		
 		// Action à exécuter
 		protected $action;
 		
 		// Initialise l'attribut requete
 		public function setRequete(Requete $requete) {
 			$this->requete = $requete;
+		}
+		
+		// Initialise l'attribut session
+		public function setSession(Session $session) {
+			$this->session = $session;
 		}
 		
 		// Exécute la méthode de classe demandée si celle ci existe

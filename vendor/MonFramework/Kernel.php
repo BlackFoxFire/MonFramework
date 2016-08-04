@@ -15,9 +15,14 @@
 	
 	/* Définition de la classe. */
 	class Kernel extends MonFramework {
+		// Objet de la session
+		private $session;
 		
 		// Constructeur de classe
 		public function __construct() {
+			// Initialisation de l'objet session
+			$this->session = new Session;
+			
 			// Chargement du moteur de template Foxy
 			require("../vendor/Foxy/Foxy.php");
 		}
@@ -34,6 +39,7 @@
 				$controleur = $routeur->getControleur($requete);
 				$action  = $routeur->getAction($requete);
 				
+				$controleur->setSession($this->session);
 				$controleur->executerAction($action);
 			}
 			catch(Exception $exception) {
