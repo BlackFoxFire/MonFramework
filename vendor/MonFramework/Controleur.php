@@ -58,15 +58,6 @@
 			$vue->generer($donnees);
 		}
 		
-		// Demande l'affichage d'un vue un utilisant le moteur de template
-		protected function render($donnees = array()) {
-			$controleur = get_class($this);
-			$controleur = strtolower(str_replace("Controleur", "", $controleur));
-			
-			$vue = new Vue($this->action, $controleur);
-			$vue->render($donnees);
-		}
-		
 		// Redirige vers une autre page
 		protected function rediriger($controleur, $action = null) {
 			$appDir = Configuration::getConfig('appDir');

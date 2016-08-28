@@ -20,9 +20,10 @@
 		// Action par defaut
 		// Affiche la liste des catégories
 		public function indexAction() {
+			$donnees['title'] = "Hello World !";
 			$donnees['hello'] = "Hello World !";
 			
-			$this->render($donnees);
+			$this->genererVue($donnees);
 		}
 		
 	}

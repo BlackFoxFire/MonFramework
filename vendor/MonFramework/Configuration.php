@@ -33,7 +33,7 @@
 		
 		// Vérifie si un module est présent
 		public static function moduleExiste($module) {
-			foreach(self::loadConfig()[self::$environnement] as $key => $valeur) {
+			foreach(self::loadConfig()['mod'] as $key => $valeur) {
 				if(strcasecmp($key, $module) == 0)
 					return true;
 			}
@@ -43,14 +43,14 @@
 		
 		// Routourne le module par defaut
 		public static function moduleParDefaut() {
-			if(isset(self::loadConfig()[self::$environnement])) {
-				if($module = array_search('defaut', self::$config[self::$environnement]))
+			if(isset(self::loadConfig()['mod'])) {
+				if($module = array_search('defaut', self::$config['mod']))
 					return $module;
 				else
 					throw new Exception("Aucun module n'est marqué par defaut.");
 			}
 			
-			throw new Exception("Section [" . self::$environnement . "] absente du fichier de configuration 'app.ini'.");
+			throw new Exception("Section [mod] absente du fichier de configuration 'app.ini'.");
 		}
 		
 		// Charge le fichier des modules autorisés/disponibles
@@ -78,28 +78,13 @@
 		
 		// Charge le fichier des paramètres pour la base de données
 		private static function loadParametres() {
-			/*if(self::$parametres == null) {
-				$fichier = "../app/dev.ini";
-				
-				if(!file_exists($fichier))
-					$fichier = "../app/prod.ini";
+			if(self::$parametres == null) {
+				$fichier = "../app/bdd.ini";
 				
 				if(!file_exists($fichier))
 					throw new Exception("Aucune fichier de configuration trouvé !");
 				else
 					self::$parametres = parse_ini_file($fichier);
-			}*/
-			
-			if(self::$parametresBdd == null) {
-				if(self::$environnement == 'dev')
-					$fichier = "../app/dev.ini";
-				else
-					$fichier = "../app/prod.ini";
-				
-				if(file_exists($fichier))
-					self::$parametresBdd = parse_ini_file($fichier);
-				else
-					throw new Exception("Aucune fichier de configuration trouvé !");
 			}
 			
 			return self::$parametresBdd;

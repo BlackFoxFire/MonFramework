@@ -15,8 +15,5 @@
 	/* Définition de la classe. */
 	abstract class MonFramework {
 		
-		// Variable pour l'environnement de travail
-		protected static $environnement = 'dev';
-		
 	}
 	/* Fin de la définition de la classe. */

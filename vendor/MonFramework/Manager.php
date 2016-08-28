@@ -2,7 +2,7 @@
 
 	/*
 	*
-	* Manger.php
+	* Manager.php
 	* @Auteur : Christophe Dufour
 	*
 	* Classe abstraite manager
@@ -32,16 +32,6 @@
 			return self::$bdd;
 		}
 		
-		// Retourne le nombre de ligne dans un table
-		public function count() {
-			$resultat = self::getBdd()->query("select * from $this->table");
-			
-			$nombreDeLigne = $resultat->rowCount();
-			$resultat->closeCursor();
-			
-			return $nombreDeLigne;
-		}
-		
 		// 
 		protected function executerRequete($sql, $parametres = null) {
 			if($parametres == null) {
@@ -54,21 +44,6 @@
 			
 			return $resultat;
 		}
-		
-		//
-		// abstract public function save();
-		
-		// 
-		// abstract public function read();
-		
-		//
-		// abstract public function delete();
-		
-		// 
-		// abstract protected function add();
-		
-		// 
-		// abstract protected function update();
 		
 	}
 	/* Fin de la définition de la classe. */

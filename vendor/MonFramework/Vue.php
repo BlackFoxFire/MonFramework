@@ -18,35 +18,45 @@
 		// Chemin vers le fichier contenant la vue à afficher
 		private $fichierVue;
 		
-		// Fichier contenant le template
-		private $template;
-		
 		// Controleur de classe
 		public function __construct($fichier, $controleur = null) {
 			$fichier = str_replace("Action", "", $fichier);
-			$this->fichierVue = $fichier . ".html";
 			
-			$dossierVues1 = "../src/vues/";
-			
-			if($controleur == null) {
-				$this->template = new Foxy($dossierVues1);
+			if(is_null($controleur)) {
+				$dossier = "../src/vues/";
 			}
 			else {
-				$dossierVues2 = "../src/" . $controleur . "/vues/";
-				$this->template = new Foxy(array($dossierVues1, $dossierVues2));
+				$dossier = "../src/" . $controleur . "/vues/";
+			}
+			
+			$this->fichierVue = $dossier . $fichier . ".php";
+		}
+		
+		// Génère et affiche la vue
+		public function generer($donnees) {
+			$donnees['contenu'] = $this->genererFichier($this->fichierVue, $donnees);
+			$donnees['appDir'] = Configuration::getConfig("appDir", "/");
+			$vue = $this->genererFichier('../src/vues/gabarit.php', $donnees);
+			echo $vue;
+		}
+		
+		// Génère un fichier vue et renvoie le résultat produit
+		private function genererFichier($fichier, $donnees) {
+			if(file_exists($fichier)) {
+				extract($donnees);
+				ob_start();
+				require($fichier);
+				return ob_get_clean();
+			}
+			else {
+				throw new Exception("Fichier '$fichier' introuvable.");
 			}
 		}
 		
-		// Génère et affiche la vue en utilisant le moteur de template
-		public function render($donnees) {
-			$this->template->load($this->fichierVue);
-			$donnees['contenu'] = $this->template->render($donnees);
-			
-			$donnees['title'] = Configuration::getConfig('appTitle', "");
-			$donnees['appDir'] = Configuration::getConfig('appDir', '/');
-			$this->template->load("gabarit.html", false);
-			
-			echo $this->template->render($donnees);
+		// Nettoie une valeur insérée dans une page HTML
+		// Permet d'éviter les problèmes d'exécution de code indésirable (XSS) dans les vues générées
+		private function nettoyer($donnees) {
+			return htmlspecialchars($donnees, ENT_QUOTES, 'UTF-8', false);
 		}
 	}
 	/* Fin de la définition de la classe. */

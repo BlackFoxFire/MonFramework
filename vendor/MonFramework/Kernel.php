@@ -22,17 +22,11 @@
 		public function __construct() {
 			// Initialisation de l'objet session
 			$this->session = new Session;
-			
-			// Chargement du moteur de template Foxy
-			require("../vendor/Foxy/Foxy.php");
 		}
 		
 		// 
-		public function chargement($environnement = null) {
+		public function chargement() {
 			try {
-				if(!is_null($environnement))
-					self::setEnvironnement($environnement);
-				
 				$requete = new Requete(array_merge($_GET, $_POST));
 				$routeur = new Routeur();
 				
@@ -44,18 +38,8 @@
 			}
 			catch(Exception $exception) {
 				$vue = new Vue("erreur");
-				$vue->render(array('messageErreur' => $exception->getMessage()));
+				$vue->generer(array('messageErreur' => $exception->getMessage()));
 			}
-		}
-		
-		// Mofifie et retoune l'environnement de travail
-		private static function setEnvironnement($env = null) {
-			if(!is_null($env)) {
-				if($env == 'prod')
-					self::$environnement = $env;
-			}
-			
-			return self::$environnement;
 		}
 		
 	}
