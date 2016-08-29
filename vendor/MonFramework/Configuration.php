@@ -15,79 +15,31 @@
 	/* Définition de la classe. */
 	class Configuration extends MonFramework {
 		
-		// Tableau de la configuration de l'application.
-		// Contient les modules autorisés et disponibles 
-		// suivant l'environnement de travail
-		private static $config;
-		
-		// Tableau des paramètres de la base de données
-		private static $parametresBdd;
-		
-		public static function getConfig($config, $valeurParDefaut) {
-			if(isset(self::loadConfig()['app'][$config])) {
-				return self::$config['app'][$config];
-			}
-			
-			return $valeurParDefaut;
-		}
-		
-		// Vérifie si un module est présent
-		public static function moduleExiste($module) {
-			foreach(self::loadConfig()['mod'] as $key => $valeur) {
-				if(strcasecmp($key, $module) == 0)
-					return true;
-			}
-			
-			return false;
-		}
-		
-		// Routourne le module par defaut
-		public static function moduleParDefaut() {
-			if(isset(self::loadConfig()['mod'])) {
-				if($module = array_search('defaut', self::$config['mod']))
-					return $module;
-				else
-					throw new Exception("Aucun module n'est marqué par defaut.");
-			}
-			
-			throw new Exception("Section [mod] absente du fichier de configuration 'app.ini'.");
-		}
-		
-		// Charge le fichier des modules autorisés/disponibles
-		private static function loadConfig() {
-			$fichier = "../app/app.ini";
-			
-			if(file_exists($fichier))
-				self::$config = parse_ini_file($fichier, true, INI_SCANNER_RAW);
-			else
-				// exit("Fichier de configuration manquant : '" . basename($fichier) . "'.");
-				throw new Exception("Fichier de configuration manquant : '" . basename($fichier) . "'.");
-			
-			return self::$config;
-		}
+		// Tableau des paramètres de configuration de l'application
+		private static $parametres;
 		
 		// Retourne la valeur d'un parametre
-		public static function getParametre($nom, $valeurParDefaut = null) {
-			if(isset(self::loadParametres()[$nom]))
-				$valeur = self::LoadParametres()[$nom];
+		public static function getParametre($section, $nom, $valeurParDefaut = null) {
+			if(isset(self::LoadParametres()[$section][$nom]))
+				$valeur = self::$parametres[$section][$nom];
 			else
 				$valeur = $valeurParDefaut;
 			
 			return $valeur;
 		}
 		
-		// Charge le fichier des paramètres pour la base de données
+		// Charge le fichier des paramètres de configuration de l'application
 		private static function loadParametres() {
-			if(self::$parametres == null) {
-				$fichier = "../app/bdd.ini";
+			if(is_null(self::$parametres)) {
+				$fichier = "../app/app.ini";
 				
 				if(!file_exists($fichier))
 					throw new Exception("Aucune fichier de configuration trouvé !");
 				else
-					self::$parametres = parse_ini_file($fichier);
+					self::$parametres = parse_ini_file($fichier, true, INI_SCANNER_RAW);
 			}
 			
-			return self::$parametresBdd;
+			return self::$parametres;
 		}
 	}
 	/* Fin de la définition de la classe. */

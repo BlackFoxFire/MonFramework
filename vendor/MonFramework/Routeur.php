@@ -21,7 +21,7 @@
 		
 		// Retourne le controlleur de la requete
 		public function getControleur(Requete $requete) {
-			$controleur = Configuration::moduleParDefaut();
+			$controleur = Configuration::getParametre("mod", "defaut", "defaut");
 			$controleur = ucfirst(strtolower($controleur));
 			
 			if($requete->parametreExiste("controleur")) {
@@ -29,16 +29,11 @@
 				$controleur = ucfirst(strtolower($controleur));
 			}
 			
-			if(Configuration::moduleExiste($controleur)) {
-				$controleur = $controleur . "Controleur";
-				$controleur = new $controleur();
-				$controleur->setRequete($requete);
-				
-				return $controleur;
-			}
-			else {
-				throw new Exception("Module non reconnu : '$controleur'.");
-			}
+			$controleur = $controleur . "Controleur";
+			$controleur = new $controleur();
+			$controleur->setRequete($requete);
+			
+			return $controleur;
 		}
 		
 		// Retourne l'action de la requete
