@@ -60,7 +60,7 @@
 		
 		// Redirige vers une autre page
 		protected function rediriger($controleur, $action = null) {
-			$appDir = Configuration::getConfig('appDir');
+			$appDir = Configuration::getParametre("app", "appDir", "");
 			
 			header("Location: " . $appDir . $controleur . "/" . $action);
 		}
