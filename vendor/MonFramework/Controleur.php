@@ -40,7 +40,7 @@
 			$action = $action . "Action";
 			
 			if(method_exists($this, $action)) {
-				$this->action = $action;
+				$this->action = str_replace("Action", "", $action);
 				$this->$action();
 			}
 			else {

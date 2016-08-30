@@ -16,13 +16,11 @@
 	class Vue {
 		
 		// Chemin vers le fichier contenant la vue à afficher
-		private $fichierVue;
+		private $fichier;
 		private $dossier;
 		
 		// Controleur de classe
-		public function __construct($fichier, $controleur = null) {
-			$fichier = str_replace("Action", "", $fichier);
-			
+		public function __construct($action, $controleur = null) {
 			$appSrc = str_replace("/", "", Configuration::getParametre("app", "appSrc"));
 			
 			$this->dossier = "../src/" . $appSrc . "/vues/";
@@ -32,12 +30,12 @@
 			else
 				$dossier = "../src/" . $appSrc . "/" . $controleur . "/vues/";
 			
-			$this->fichierVue = $dossier . $fichier . ".php";
+			$this->fichier = $dossier . $action . ".php";
 		}
 		
 		// Génère et affiche la vue
 		public function generer($donnees) {
-			$donnees['contenu'] = $this->genererFichier($this->fichierVue, $donnees);
+			$donnees['contenu'] = $this->genererFichier($this->fichier, $donnees);
 			$donnees['appDir'] = Configuration::getParametre("app", "appDir", "/");
 			$vue = $this->genererFichier($this->dossier . 'gabarit.php', $donnees);
 			echo $vue;
