@@ -13,7 +13,7 @@
 	// namespace BlackFox\MonFramework;
 	
 	/* Définition de la classe. */
-	class Vue extends MonFramework {
+	class Vue {
 		
 		// Chemin vers le fichier contenant la vue à afficher
 		private $fichierVue;

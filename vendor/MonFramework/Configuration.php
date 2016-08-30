@@ -13,7 +13,7 @@
 	// namespace BlackFox\MonFramework;
 	
 	/* Définition de la classe. */
-	class Configuration extends MonFramework {
+	class Configuration {
 		
 		// Tableau des paramètres de configuration de l'application
 		private static $parametres;

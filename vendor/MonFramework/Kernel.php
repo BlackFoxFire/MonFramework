@@ -14,7 +14,7 @@
 	// namespace BlackFox\MonFramework;
 	
 	/* Définition de la classe. */
-	class Kernel extends MonFramework {
+	class Kernel {
 		
 		// 
 		public function chargement() {

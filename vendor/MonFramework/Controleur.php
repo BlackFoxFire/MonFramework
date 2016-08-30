@@ -14,7 +14,7 @@
 	// namespace BlackFox\MonFramework;
 	
 	/* Définition de la classe. */
-	abstract class Controleur extends MonFramework {
+	abstract class Controleur {
 		
 		// Requete http
 		protected $requete;
