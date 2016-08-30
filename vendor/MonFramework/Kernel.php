@@ -15,25 +15,19 @@
 	
 	/* Définition de la classe. */
 	class Kernel extends MonFramework {
-		// Objet de la session
-		private $session;
-		
-		// Constructeur de classe
-		public function __construct() {
-			// Initialisation de l'objet session
-			$this->session = new Session;
-		}
 		
 		// 
 		public function chargement() {
 			try {
+				$session = new Session;
+				
 				$requete = new Requete(array_merge($_GET, $_POST));
 				$routeur = new Routeur();
 				
 				$controleur = $routeur->getControleur($requete);
 				$action  = $routeur->getAction($requete);
 				
-				$controleur->setSession($this->session);
+				$controleur->setSession($session);
 				$controleur->executerAction($action);
 			}
 			catch(Exception $exception) {
