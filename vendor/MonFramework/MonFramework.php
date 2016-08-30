@@ -14,10 +14,10 @@
 	// namespace BlackFox\MonFramework;
 	
 	/* Définition de la classe. */
-	class Kernel {
+	class MonFramework {
 		
-		// 
-		public function chargement() {
+		// Chargement du framework
+		public static function chargement() {
 			try {
 				$session = new Session;
 				

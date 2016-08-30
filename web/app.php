@@ -15,5 +15,4 @@
 	require_once('../vendor/MonFramework/AutoLoad.php');
 	
 	// Chargement du coeur
-	$kernel = new Kernel();
-	$kernel->chargement();
+	MonFramework::chargement();
