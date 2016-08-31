@@ -13,7 +13,7 @@
 	use BlackFox\MonFramework\MonFramework;
 	
 	// Charge la fonction d'autochargement des classes du framework
-	require_once('../vendor/MonFramework/AutoLoad.php');
+	require_once('../vendor/MonFramework/AutoLoader.php');
 	AutoLoader::enregistrement();
 	
 	// Chargement du coeur
