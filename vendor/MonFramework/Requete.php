@@ -10,7 +10,7 @@
 	*/
 	
 	// Définition de l'espace de nom
-	// namespace BlackFox\MonFramework;
+	namespace BlackFox\MonFramework;
 	
 	/* Définition de la classe. */
 	class Requete {

@@ -11,7 +11,7 @@
 	*/
 	
 	// Définition de l'espace de nom
-	// namespace BlackFox\MonFramework;
+	namespace BlackFox\MonFramework;
 	
 	/* Définition de la classe. */
 	class MonFramework {
@@ -30,7 +30,7 @@
 				$controleur->setSession($session);
 				$controleur->executerAction($action);
 			}
-			catch(Exception $exception) {
+			catch(\Exception $exception) {
 				$vue = new Vue("erreur");
 				$vue->generer(array('messageErreur' => $exception->getMessage()));
 			}
