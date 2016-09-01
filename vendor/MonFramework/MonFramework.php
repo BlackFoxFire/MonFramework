@@ -5,8 +5,8 @@
 	* Kernel.php
 	* @Auteur : Christophe Dufour
 	*
-	* Coeur du framework
-	* Charge la configuration principale de celui ci
+	* Coeur du framework.
+	* Intéroge le router pour lancer la bonne action d'un controleur.
 	*
 	*/
 	

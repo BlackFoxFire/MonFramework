@@ -12,13 +12,13 @@
 	use MonFramework\AutoLoader;
 	use MonFramework\MonFramework;
 	
-	$fichierAutoload = "../vendor/MonFramework/AutoLoader.php";
-	
-	if(DIRECTORY_SEPARATOR == "\\")
-		$fichierAutoload = str_replace("/", DIRECTORY_SEPARATOR, $fichierAutoload);
+	define("DS", DIRECTORY_SEPARATOR);
+	define("ROOT", dirname(__DIR__) . DS);
+	define("VENDOR", ROOT . "vendor" . DS);
+	define("SRC", ROOT . "src" . DS);
 	
 	// Charge la fonction d'autochargement des classes du framework
-	require_once($fichierAutoload);
+	require_once(VENDOR . "MonFramework" . DS . "AutoLoader.php");
 	
 	// Enregistrement des fonctions d'auto chargement.
 	AutoLoader::enregistrement();

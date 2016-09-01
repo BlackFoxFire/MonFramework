@@ -11,11 +11,6 @@
 	// Définition de l'espace de nom
 	namespace MonFramework;
 	
-	define("DS", DIRECTORY_SEPARATOR);
-	
-	define("ROOT", ".." . DS);
-	define("SRC", ROOT . "src" . DS);
-	
 	/* Définition de la classe */
 	class AutoLoader {
 		// Enregistre les fonctions d'auto chargement
@@ -26,10 +21,10 @@
 		
 		// Charge automatiquement un classe du framework.
 		public static function frameworkAutoLoader($classe) {
-			$classe = str_replace("MonFramework\\", "", $classe);
+			$classe = str_replace("\\", DS, $classe);
 			
-			if(file_exists(__DIR__ . "/" . $classe . ".php"))
-				require_once(__DIR__ . "/" . $classe . ".php");
+			if(file_exists(VENDOR . $classe . ".php"))
+				require_once(VENDOR . $classe . ".php");
 		}
 		
 		// Charge une classe controlleur ou un manager de l'application
