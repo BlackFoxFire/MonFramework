@@ -9,8 +9,8 @@
 	*/
 	
 	// Importation de classe
-	use BlackFox\MonFramework\AutoLoader;
-	use BlackFox\MonFramework\MonFramework;
+	use MonFramework\AutoLoader;
+	use MonFramework\MonFramework;
 	
 	$fichierAutoload = "../vendor/MonFramework/AutoLoader.php";
 	

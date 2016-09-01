@@ -9,7 +9,7 @@
 	*/
 	
 	// Définition de l'espace de nom
-	namespace BlackFox\MonFramework;
+	namespace MonFramework;
 	
 	/* Définition de la classe */
 	class Session {

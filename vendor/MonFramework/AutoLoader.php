@@ -9,7 +9,7 @@
 	*/
 	
 	// Définition de l'espace de nom
-	namespace BlackFox\MonFramework;
+	namespace MonFramework;
 	
 	define("DS", DIRECTORY_SEPARATOR);
 	
@@ -26,7 +26,7 @@
 		
 		// Charge automatiquement un classe du framework.
 		public static function frameworkAutoLoader($classe) {
-			$classe = str_replace("BlackFox\\MonFramework\\", "", $classe);
+			$classe = str_replace("MonFramework\\", "", $classe);
 			
 			if(file_exists(__DIR__ . "/" . $classe . ".php"))
 				require_once(__DIR__ . "/" . $classe . ".php");

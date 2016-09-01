@@ -12,7 +12,7 @@
 	// Définition de l'espace de nom
 	namespace Defaut\Defaut;
 	
-	use BlackFox\MonFramework\Controleur;
+	use MonFramework\Controleur;
 	
 	/* Définition de la classe. */
 	class DefautControleur extends Controleur {
