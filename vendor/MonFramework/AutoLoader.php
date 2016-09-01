@@ -21,10 +21,12 @@
 		
 		// Charge automatiquement un classe du framework.
 		public static function frameworkAutoLoader($classe) {
-			$classe = str_replace("\\", DS, $classe);
+			$classe = str_replace("\\", DIRECTORY_SEPARATOR, $classe);
 			
-			if(file_exists(VENDOR . $classe . ".php"))
-				require_once(VENDOR . $classe . ".php");
+			$fichier = VENDOR . $classe . ".php";
+			
+			if(file_exists($fichier))
+				require_once($fichier);
 		}
 		
 		// Charge une classe controlleur ou un manager de l'application
