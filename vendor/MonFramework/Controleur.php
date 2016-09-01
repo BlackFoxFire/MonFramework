@@ -52,7 +52,6 @@
 		// Demande l'affichage d'un vue
 		protected function genererVue($donnees = array()) {
 			$controleur = get_class($this);
-			//$controleur = str_replace("Controleur", "", $controleur);
 			
 			$vue = new Vue($this->action, $controleur);
 			$vue->generer($donnees);
