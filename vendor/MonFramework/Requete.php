@@ -34,7 +34,7 @@
 			if($this->parametreExiste($nom))
 				return $this->parametres[$nom];
 			else
-				throw new Exception("Parametre $nom absent de la requête.");
+				throw new \Exception("Parametre $nom absent de la requête.");
 		}
 		
 	}

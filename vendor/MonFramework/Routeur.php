@@ -29,7 +29,10 @@
 				$controleur = ucfirst(strtolower($controleur));
 			}
 			
-			$controleur = $controleur . "Controleur";
+			$espaceDeNom = Configuration::getParametre("app", "appSrc");
+			$espaceDeNom = ucfirst(str_replace("/", "\\", $espaceDeNom)) . "\\";
+			
+			$controleur = $espaceDeNom . $controleur . "\\" . $controleur . "Controleur";
 			$controleur = new $controleur();
 			$controleur->setRequete($requete);
 			

@@ -31,10 +31,10 @@
 		// Charge le fichier des paramètres de configuration de l'application
 		private static function loadParametres() {
 			if(is_null(self::$parametres)) {
-				$fichier = "../app/app.ini";
+				$fichier = ROOT . "app" . DS . "app.ini";
 				
 				if(!file_exists($fichier))
-					throw new Exception("Aucune fichier de configuration trouvé !");
+					throw new \Exception("Aucune fichier de configuration trouvé !");
 				else
 					self::$parametres = parse_ini_file($fichier, true, INI_SCANNER_RAW);
 			}

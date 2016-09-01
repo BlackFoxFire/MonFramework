@@ -11,6 +11,11 @@
 	// Définition de l'espace de nom
 	namespace BlackFox\MonFramework;
 	
+	define("DS", DIRECTORY_SEPARATOR);
+	
+	define("ROOT", ".." . DS);
+	define("SRC", ROOT . "src" . DS);
+	
 	/* Définition de la classe */
 	class AutoLoader {
 		// Enregistre les fonctions d'auto chargement
@@ -23,9 +28,8 @@
 		public static function frameworkAutoLoader($classe) {
 			$classe = str_replace("BlackFox\\MonFramework\\", "", $classe);
 			
-			if(file_exists(__DIR__ . "/$classe" . '.php')) {
-				require_once(__DIR__ . "/$classe" . '.php');
-			}
+			if(file_exists(__DIR__ . "/" . $classe . ".php"))
+				require_once(__DIR__ . "/" . $classe . ".php");
 		}
 		
 		// Charge une classe controlleur ou un manager de l'application
@@ -33,9 +37,9 @@
 			$appSrc = str_replace("/", "", Configuration::getParametre("app", "appSrc"));
 			
 			if(self::isControleur($classe)) {
-				$dossier = strtolower(str_replace('Controleur', "", $classe));
+				$classe = str_replace("\\", DIRECTORY_SEPARATOR, $classe);
 				
-				$fichier = "../src/" . $appSrc . "/" . $dossier . '/' . $classe . ".php";
+				$fichier = SRC . $classe . ".php";
 				
 				if(file_exists($fichier)) {
 					require_once($fichier);
@@ -46,7 +50,7 @@
 			if(self::isManager($classe)) {
 				$dossier = strtolower(str_replace('Manager', "", $classe));
 				
-				$fichier = "../src/" . $appSrc . "/" . $dossier . '/modele/' . $classe . ".php";
+				$fichier = SRC . $appSrc . DS . $dossier . '/modele/' . $classe . ".php";
 				
 				if(file_exists($fichier)) {
 					require_once($fichier);
@@ -57,7 +61,7 @@
 			if(self::isClasse($classe)) {
 				$dossier = strtolower($classe);
 				
-				$fichier = "../src/" . $appSrc . "/" . $dossier . '/classe/' . $classe . ".php";
+				$fichier = SRC . $appSrc . DS . $dossier . '/classe/' . $classe . ".php";
 				
 				if(file_exists($fichier)) {
 					require_once($fichier);

@@ -45,14 +45,14 @@
 			}
 			else {
 				$classe = get_class($this);
-				throw new Exception("Action '$action' non définie dans la classe '$classe'.");
+				throw new \Exception("Action '$action' non définie dans la classe '$classe'.");
 			}
 		}
 		
 		// Demande l'affichage d'un vue
 		protected function genererVue($donnees = array()) {
 			$controleur = get_class($this);
-			$controleur = strtolower(str_replace("Controleur", "", $controleur));
+			//$controleur = str_replace("Controleur", "", $controleur);
 			
 			$vue = new Vue($this->action, $controleur);
 			$vue->generer($donnees);

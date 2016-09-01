@@ -21,14 +21,20 @@
 		
 		// Controleur de classe
 		public function __construct($action, $controleur = null) {
-			$appSrc = str_replace("/", "", Configuration::getParametre("app", "appSrc"));
+			$appSrc = Configuration::getParametre("app", "appSrc");
 			
-			$this->dossier = "../src/" . $appSrc . "/vues/";
+			$this->dossier = SRC . $appSrc . DS . "vues" . DS;
 			
-			if(is_null($controleur))
+			if(is_null($controleur)) {
 				$dossier = $this->dossier;
-			else
-				$dossier = "../src/" . $appSrc . "/" . $controleur . "/vues/";
+			}
+			else {
+				$ctrl = substr(strrchr($controleur, "\\"), 1);
+				$controleur = str_replace($ctrl, "", $controleur);
+				$controleur = str_replace("\\", DS, $controleur);
+				
+				$dossier = SRC .$controleur . "vues" . DS;
+			}
 			
 			$this->fichier = $dossier . $action . ".php";
 		}
@@ -50,7 +56,7 @@
 				return ob_get_clean();
 			}
 			else {
-				throw new Exception("Fichier '$fichier' introuvable.");
+				throw new \Exception("Fichier '$fichier' introuvable.");
 			}
 		}
 		

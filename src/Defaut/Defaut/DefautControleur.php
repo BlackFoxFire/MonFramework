@@ -10,7 +10,7 @@
 	*/
 	
 	// Définition de l'espace de nom
-	// namespace Defaut;
+	namespace Defaut\Defaut;
 	
 	use BlackFox\MonFramework\Controleur;
 	// use Defaut\DefautControleur;
@@ -28,7 +28,7 @@
 		public function indexAction() {
 			$donnees['title'] = "Hello World !";
 			$donnees['hello'] = "Hello World !";
-			echo __NAMESPACE__;
+			// echo __NAMESPACE__;
 			$this->genererVue($donnees);
 		}
 		
