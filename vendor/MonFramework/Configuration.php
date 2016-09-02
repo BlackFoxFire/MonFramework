@@ -36,7 +36,7 @@
 				if(!file_exists($fichier))
 					throw new \Exception("Aucune fichier de configuration trouvé !");
 				else
-					self::$parametres = parse_ini_file($fichier, true, INI_SCANNER_RAW);
+					self::$parametres = parse_ini_file($fichier, true);
 			}
 			
 			return self::$parametres;

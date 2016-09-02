@@ -22,11 +22,11 @@
 		// Initialise la connexion vers la base de données
 		static private function getBdd() {
 			if(self::$bdd === null) {
-				$dsn = Configuration::getParametre('dsn');
-				$login = Configuration::getParametre("login");
-				$password = Configuration::getParametre("password");
+				$dsn = Configuration::getParametre("bdd", "dsn");
+				$login = Configuration::getParametre("bdd", "login");
+				$password = Configuration::getParametre("bdd", "password");
 				
-				self::$bdd = new PDO($dsn, $login, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+				self::$bdd = new \PDO($dsn, $login, $password, array(\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION));
 			}
 			
 			return self::$bdd;
