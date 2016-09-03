@@ -23,7 +23,7 @@
 			$donnees['title'] = "Hello World !";
 			$donnees['hello'] = "Hello World !";
 			
-			$this->genererVue($donnees);
+			$this->render($donnees);
 		}
 		
 	}

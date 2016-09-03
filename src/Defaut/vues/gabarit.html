@@ -10,13 +10,13 @@
 		
 		<!-- Jeu de caractère utilisé. -->
         <meta charset="utf-8" />
-		<base href="<?= $appDir ?>" />
+		<base href="{{ appDir }}" />
 		
 		<!-- Page de style css. -->
 		<link rel="stylesheet" href="css/style.css" />
 		
 		<!-- Titre de la page. -->
-        <title><?= $title ?></title>
+        <title>{{ title }}</title>
 
     </head>
 
@@ -26,7 +26,7 @@
 		
 		<div id="cadrePrincipal">
 			
-			<?= $contenu ?>
+			{{ contenu:html }}
 			
 		</div>
 		

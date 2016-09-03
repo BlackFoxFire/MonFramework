@@ -32,7 +32,7 @@
 			}
 			catch(\Exception $exception) {
 				$vue = new Vue("erreur");
-				$vue->generer(array('messageErreur' => $exception->getMessage()));
+				$vue->render(array('messageErreur' => $exception->getMessage()));
 			}
 		}
 		

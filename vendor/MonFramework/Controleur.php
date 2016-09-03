@@ -53,7 +53,7 @@
 		protected function render($donnees = array(), $genererFichier = true) {
 			$controleur = get_class($this);
 			
-			$vue = new Template($this->action, $controleur);
+			$vue = new Vue($this->action, $controleur);
 			$vue->render($donnees, $genererFichier);
 		}
 		
