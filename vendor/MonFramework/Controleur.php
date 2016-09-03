@@ -49,12 +49,12 @@
 			}
 		}
 		
-		// Demande l'affichage d'un vue
-		protected function genererVue($donnees = array()) {
+		// Demande l'affichage d'une vue avec un moteur de template
+		protected function render($donnees = array(), $genererFichier = true) {
 			$controleur = get_class($this);
 			
-			$vue = new Vue($this->action, $controleur);
-			$vue->generer($donnees);
+			$vue = new Template($this->action, $controleur);
+			$vue->render($donnees, $genererFichier);
 		}
 		
 		// Redirige vers une autre page
