@@ -25,18 +25,18 @@
 		}
 		
 		// Ajoute un variable de session
-		public function setAttribut($nom, $valeur) {
+		public function set($nom, $valeur) {
 			$_SESSION[$nom] = $valeur;
 		}
 		
 		// Renvoie true si une variable de session existe
-		public function existeAttribut($nom) {
+		public function existe($nom) {
 			return(!empty($_SESSION[$nom]));
 		}
 		
 		// Renvoie la valeur d'une variable de session
-		public function getAttribut($nom) {
-			if(existeAttribut($nom)) {
+		public function get($nom) {
+			if($this->existe($nom)) {
 				return($_SESSION[nom]);
 			}
 			else {
