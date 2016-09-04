@@ -21,8 +21,8 @@
 			$controleur = Configuration::getParametre("mod", "defaut", "defaut");
 			$controleur = ucfirst(strtolower($controleur));
 			
-			if($requete->parametreExiste("controleur")) {
-				$controleur = $requete->getParametre("controleur");
+			if($requete->existe("controleur")) {
+				$controleur = $requete->get("controleur");
 				$controleur = ucfirst(strtolower($controleur));
 			}
 			
@@ -40,8 +40,8 @@
 		public function getAction(Requete $requete) {
 			$action = "index";
 			
-			if($requete->parametreExiste("action")) {
-				$action = $requete->getParametre("action");
+			if($requete->existe("action")) {
+				$action = $requete->get("action");
 			}
 			
 			return $action;

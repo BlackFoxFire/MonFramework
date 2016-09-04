@@ -25,13 +25,13 @@
 		}
 		
 		// Renvoie true si un parametre existe dans le tableau des paramètres
-		public function parametreExiste($nom) {
+		public function existe($nom) {
 			return(isset($this->parametres[$nom]) && $this->parametres[$nom] != "");
 		}
 		
 		// Retourne la valeur d'un paramètre
-		public function getParametre($nom) {
-			if($this->parametreExiste($nom))
+		public function get($nom) {
+			if($this->existe($nom))
 				return $this->parametres[$nom];
 			else
 				throw new \Exception("Parametre $nom absent de la requête.");
