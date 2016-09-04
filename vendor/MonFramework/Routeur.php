@@ -16,9 +16,6 @@
 	/* Définition de la classe. */
 	class Routeur {
 		
-		// Tableau des parametres controleur/action/id
-		private $parametres;
-		
 		// Retourne le controlleur de la requete
 		public function getControleur(Requete $requete) {
 			$controleur = Configuration::getParametre("mod", "defaut", "defaut");
