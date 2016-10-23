@@ -26,7 +26,17 @@
 		
 		<div id="cadrePrincipal">
 			
-			{{ contenu:html }}
+			<header>
+				<h1>{{ title }}</h1>
+			</header>
+			
+			<section>
+				{% block body %}
+				{% endblock %}
+			</section>
+			
+			<footer>
+			</footer>
 			
 		</div>
 		

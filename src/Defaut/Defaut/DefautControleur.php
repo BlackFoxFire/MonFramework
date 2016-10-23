@@ -21,7 +21,7 @@
 		// Action par defaut
 		public function indexAction() {
 			$donnees['title'] = "Hello World !";
-			$donnees['hello'] = "Hello World !";
+			$donnees['hello'] = "Bonjour tout le monde !";
 			
 			$this->render($donnees);
 		}
