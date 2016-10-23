@@ -24,14 +24,13 @@
 		
 		// Controleur de classe
 		public function __construct($action, $controleur = null) {
-			$appSrc = Configuration::getParametre("app", "appSrc");
-			$this->path['dossier1'] = SRC . $appSrc . DS . "vues" . DS;
+			$path = Configuration::getParametre("app", "appNamespace");
+			$path = str_replace('\\', DS, $path);
+			
+			$this->path[] = SRC . $path . DS . "vues" . DS;
 			
 			if(!is_null($controleur)) {
-				$ctrl = substr(strrchr($controleur, "\\"), 1);
-				$controleur = str_replace($ctrl, "", $controleur);
-				$controleur = str_replace("\\", DIRECTORY_SEPARATOR, $controleur);
-				$this->path['dossier2'] = SRC . $controleur . "vues" . DS;
+				$this->path[] = SRC . $path. DS . $controleur . DS . "vues" . DS;
 			}
 			
 			$this->fichier = $action . ".html";
@@ -41,16 +40,10 @@
 		public function render($donnees, $genererFichier = true) {
 			$donnees['appDir'] = Configuration::getParametre("app", "appDir");
 			
-			if($genererFichier) {
-				$vue = new Foxy($this->path);
-				$vue->load($this->fichier);
-				
-				$donnees['contenu'] = $vue->render($donnees);
-			}
+			$loader = new \Twig_Loader_Filesystem($this->path);
+			$twig = new \Twig_Environment($loader, array('cache' => false));
 			
-			$vue->load("gabarit.html", false);
-			echo $vue->render($donnees);
-			
+			echo $twig->render($this->fichier, $donnees);
 		}
 		
 	}

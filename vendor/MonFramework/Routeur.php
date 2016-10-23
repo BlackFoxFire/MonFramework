@@ -18,7 +18,7 @@
 		
 		// Retourne le controlleur de la requete
 		public function getControleur(Requete $requete) {
-			$controleur = Configuration::getParametre("mod", "defaut", "defaut");
+			$controleur = Configuration::getParametre("controleur", "defaut", "defaut");
 			$controleur = ucfirst(strtolower($controleur));
 			
 			if($requete->existe("controleur")) {
@@ -26,14 +26,16 @@
 				$controleur = ucfirst(strtolower($controleur));
 			}
 			
-			$espaceDeNom = Configuration::getParametre("app", "appSrc");
-			$espaceDeNom = ucfirst(str_replace("/", "\\", $espaceDeNom)) . "\\";
+			$espaceDeNom = Configuration::getParametre("app", "appNamespace");
+			// $espaceDeNom = str_replace("/", "\\", $espaceDeNom) . "\\";
 			
-			$controleur = $espaceDeNom . $controleur . "\\" . $controleur . "Controleur";
-			$controleur = new $controleur();
-			$controleur->setRequete($requete);
+			$ctrl = $espaceDeNom . "\\" . $controleur . "\\" . $controleur . "Controleur";
+			$ctrl = new $ctrl();
 			
-			return $controleur;
+			$ctrl->setRequete($requete);
+			$ctrl->setControleur($controleur);
+			
+			return $ctrl;
 		}
 		
 		// Retourne l'action de la requete

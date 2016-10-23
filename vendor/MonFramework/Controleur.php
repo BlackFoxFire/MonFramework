@@ -25,6 +25,9 @@
 		// Action à exécuter
 		protected $action;
 		
+		// Le controleur
+		protected $controleur;
+		
 		// Initialise l'attribut requete
 		public function setRequete(Requete $requete) {
 			$this->requete = $requete;
@@ -35,12 +38,16 @@
 			$this->session = $session;
 		}
 		
+		public function setControleur($controleur) {
+			$this->controleur = $controleur;
+		}
+		
 		// Exécute la méthode de classe demandée si celle ci existe
 		public function executerAction($action) {
-			$action = $action . "Action";
-			
-			if(method_exists($this, $action)) {
-				$this->action = str_replace("Action", "", $action);
+			if(method_exists($this, $action . "Action")) {
+				$this->action = $action;
+				
+				$action = $action . "Action";
 				$this->$action();
 			}
 			else {
@@ -50,11 +57,9 @@
 		}
 		
 		// Demande l'affichage d'une vue avec un moteur de template
-		protected function render($donnees = array(), $genererFichier = true) {
-			$controleur = get_class($this);
-			
-			$vue = new Vue($this->action, $controleur);
-			$vue->render($donnees, $genererFichier);
+		protected function render(array $donnees = array()) {
+			$vue = new Vue($this->action, $this->controleur);
+			$vue->render($donnees);
 		}
 		
 		// Redirige vers une autre page
