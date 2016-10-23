@@ -37,10 +37,10 @@
 		// Renvoie la valeur d'une variable de session
 		public function get($nom) {
 			if($this->existe($nom)) {
-				return($_SESSION[nom]);
+				return($_SESSION[$nom]);
 			}
 			else {
-				throw new Exception("Attribut '$nom' absent de la session.");
+				throw new \Exception("Attribut '$nom' absent de la session.");
 			}
 		}
 	
