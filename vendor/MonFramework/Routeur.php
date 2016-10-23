@@ -18,7 +18,7 @@
 		
 		// Retourne le controlleur de la requete
 		public function getControleur(Requete $requete) {
-			$controleur = Configuration::getParametre("controleur", "defaut", "defaut");
+			$controleur = Configuration::getParametre("controleur", "controleur", "defaut");
 			$controleur = ucfirst(strtolower($controleur));
 			
 			if($requete->existe("controleur")) {
