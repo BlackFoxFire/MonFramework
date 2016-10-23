@@ -37,5 +37,13 @@
 				throw new \Exception("Parametre $nom absent de la requête.");
 		}
 		
+		// Retourne la valeur d'un paramètre, sinon retourne null.
+		public function test($nom) {
+			if(isset($this->parametres[$nom])) {
+				return $this->parametres[$nom];
+			}
+			
+			return null;
+		}
 	}
 	/* Fin de la définition de la classe. */
