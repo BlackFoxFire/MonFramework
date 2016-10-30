@@ -14,7 +14,7 @@
 	namespace MonFramework;
 	
 	/* Définition de la classe. */
-	abstract class Manager {
+	abstract class Modele {
 		
 		// Lien vers la base de données
 		private static $bdd;

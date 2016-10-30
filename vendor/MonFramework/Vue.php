@@ -27,10 +27,10 @@
 			$path = Configuration::getParametre("app", "appNamespace");
 			$path = str_replace('\\', DS, $path);
 			
-			$this->path[] = SRC . $path . DS . "vues" . DS;
+			$this->path[] = SRC . $path . DS . "Ressources" . DS . "Vues" . DS;
 			
 			if(!is_null($controleur)) {
-				$this->path[] = SRC . $path. DS . $controleur . DS . "vues" . DS;
+				$this->path[] = $this->path[0] . DS . $controleur;
 			}
 			
 			$this->fichier = $action . ".html";

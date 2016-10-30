@@ -10,7 +10,7 @@
 	*/
 	
 	// Définition de l'espace de nom
-	namespace Defaut\Defaut;
+	namespace Defaut\Controleurs;
 	
 	// Importation
 	use MonFramework\Controleur;

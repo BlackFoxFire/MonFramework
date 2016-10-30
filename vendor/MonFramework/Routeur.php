@@ -29,7 +29,8 @@
 			$espaceDeNom = Configuration::getParametre("app", "appNamespace");
 			// $espaceDeNom = str_replace("/", "\\", $espaceDeNom) . "\\";
 			
-			$ctrl = $espaceDeNom . "\\" . $controleur . "\\" . $controleur . "Controleur";
+			// $ctrl = $espaceDeNom . "\\" . $controleur . "\\" . $controleur . "Controleur";
+			$ctrl = $espaceDeNom . "\\" . "Controleurs" . "\\" . $controleur . "Controleur";
 			$ctrl = new $ctrl();
 			
 			$ctrl->setRequete($requete);
