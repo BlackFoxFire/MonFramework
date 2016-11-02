@@ -30,7 +30,7 @@
 			$this->path[] = SRC . $path . DS . "Ressources" . DS . "Vues" . DS;
 			
 			if(!is_null($controleur)) {
-				$this->path[] = $this->path[0] . DS . $controleur;
+				$this->path[] = $this->path[0] . $controleur . DS;
 			}
 			
 			$this->fichier = $action . ".html";
