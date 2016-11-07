@@ -14,7 +14,6 @@
 	define("DS", DIRECTORY_SEPARATOR);
 	define("ROOT", dirname(__DIR__) . DS);
 	define("VENDOR", ROOT . "vendor" . DS);
-	define("SRC", ROOT . "src" . DS);
 	
 	// Charge la fonction d'autochargement des classes du framework
 	require_once(VENDOR . "MonFramework" . DS . "AutoLoader.php");

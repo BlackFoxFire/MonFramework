@@ -13,6 +13,13 @@
 	// Définition de l'espace de nom
 	namespace MonFramework;
 	
+	// Définition des constantes
+	// URL par défaut
+	define("BASEHREF", dirname($_SERVER['SCRIPT_NAME']) . DIRECTORY_SEPARATOR);
+	// Dossier des sources de l'application
+	define("SRC", ROOT . "src" . DS);
+	
+	
 	/* Définition de la classe. */
 	class MonFramework {
 		

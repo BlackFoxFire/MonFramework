@@ -38,7 +38,7 @@
 		
 		// Génère et affiche la vue
 		public function render($donnees, $genererFichier = true) {
-			$donnees['appDir'] = Configuration::getParametre("app", "appDir");
+			$donnees['basehref'] = BASEHREF;
 			
 			$loader = new \Twig_Loader_Filesystem($this->path);
 			$twig = new \Twig_Environment($loader, array('cache' => false));

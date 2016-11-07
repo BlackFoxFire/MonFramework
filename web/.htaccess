@@ -10,9 +10,7 @@ Options Indexes FollowSymlinks
 	
 	RewriteBase /dev/MonFramework/web/
 	
-	RewriteCond %{REQUEST_FILENAME} -d [OR]
-	RewriteCond %{REQUEST_FILENAME} -f [OR]
-	RewriteCond %{REQUEST_FILENAME} -l
+	RewriteCond %{REQUEST_FILENAME} -f
 	RewriteRule ^ - [L]
 	
 	RewriteRule ^([a-zA-Z0-9]*)/?([a-zA-Z0-9]*)?/?([a-zA-Z0-9]*)?/?$ app.php?controleur=$1&action=$2&id=$3 [L]

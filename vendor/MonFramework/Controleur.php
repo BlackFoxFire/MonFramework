@@ -64,9 +64,7 @@
 		
 		// Redirige vers une autre page
 		protected function rediriger($controleur, $action = null) {
-			$appDir = Configuration::getParametre("app", "appDir", "");
-			
-			header("Location: " . $appDir . $controleur . "/" . $action);
+			header("Location: " . BASEHREF . $controleur . "/" . $action);
 		}
 		
 		// Méthode abstraite correspondant à laction par defaut
