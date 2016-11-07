@@ -23,7 +23,7 @@
 			// Moteur de template Twig
 			require_once(VENDOR . DS . "Twig" . DS . "lib" . DS . "Twig" . DS . "Autoloader.php");
 			// Enregistrement de l'auto-chargement de Twig
-			\Twig_Autoloader::register();
+			Twig_Autoloader::register();
 		}
 		
 		// Charge automatiquement un classe du framework.
