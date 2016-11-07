@@ -8,9 +8,6 @@
 	*
 	*/
 	
-	// Définition de l'espace de nom
-	namespace MonFramework;
-	
 	/* Définition de la classe */
 	class AutoLoader {
 		// Enregistre les fonctions d'auto chargement

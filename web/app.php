@@ -9,7 +9,6 @@
 	*/
 	
 	// Importation de classe
-	use MonFramework\AutoLoader;
 	use MonFramework\MonFramework;
 	
 	define("DS", DIRECTORY_SEPARATOR);
@@ -22,6 +21,6 @@
 	
 	// Enregistrement des fonctions d'auto chargement.
 	AutoLoader::enregistrement();
-	
+		
 	// Chargement du framework
 	MonFramework::chargement();
