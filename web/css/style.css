@@ -10,6 +10,10 @@
 body {
 	background-color: silver;
 	
-	font-family: Verdana, sans-serif;
+	font-family: Verdana;
 	font-size: 1em;
+}
+
+img {
+	width: 100px;
 }
