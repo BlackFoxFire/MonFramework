@@ -8,11 +8,13 @@ Options Indexes FollowSymlinks
 <IfModule mod_rewrite.c>
 	RewriteEngine On
 	
+	RewriteBase /dev/MonFramework/web/
+	
 	RewriteCond %{REQUEST_FILENAME} -d [OR]
 	RewriteCond %{REQUEST_FILENAME} -f [OR]
 	RewriteCond %{REQUEST_FILENAME} -l
 	RewriteRule ^ - [L]
 	
-	RewriteRule ^([a-zA-Z0-9]*)/?([a-zA-Z0-9]*)?/?([a-zA-Z0-9]*)?/?$ /dev/MonFramework/web/app.php?controleur=$1&action=$2&id=$3 [L]
+	RewriteRule ^([a-zA-Z0-9]*)/?([a-zA-Z0-9]*)?/?([a-zA-Z0-9]*)?/?$ app.php?controleur=$1&action=$2&id=$3 [L]
 	
 </IfModule>
