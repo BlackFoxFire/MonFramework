@@ -43,7 +43,7 @@
 				return $this->parametres[$nom];
 			}
 			
-			return null;
+			return "";
 		}
 	}
 	/* Fin de la définition de la classe. */
