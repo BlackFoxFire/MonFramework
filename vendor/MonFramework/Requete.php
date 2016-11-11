@@ -21,6 +21,11 @@
 		// Constructeur de classe
 		// Initialise l'attribut parametres
 		public function __construct($parametres) {
+			$this->setParametres($parametres);
+		}
+		
+		// Initialise l'attribut parametres
+		public function setParametres($parametres) {
 			$this->parametres = $parametres;
 		}
 		
