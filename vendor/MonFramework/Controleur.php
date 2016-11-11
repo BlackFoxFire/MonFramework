@@ -63,8 +63,13 @@
 		}
 		
 		// Redirige vers une autre page
-		protected function rediriger($controleur, $action = null) {
-			header("Location: " . BASEHREF . $controleur . "/" . $action);
+		protected function rediriger($controleur = null, $action = null) {
+			if(is_null($controleur)) {
+				header("Location: " . BASEHREF);
+			}
+			else {
+				header("Location: " . BASEHREF . $controleur . "/" . $action);
+			}
 		}
 		
 		// Méthode abstraite correspondant à laction par defaut
