@@ -46,7 +46,7 @@ class Session {
 	// Renvoie la valeur d'une variable de session.
 	// Si celui ci n'existe pas, c'est returnValue qui est renvoyé.
 	public function get($key, $returnValue = false) {
-		if(self::_isset($key))
+		if($this->_isset($key))
 			return $_SESSION[$key];
 		
 		return $returnValue;
