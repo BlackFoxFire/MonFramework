@@ -19,8 +19,11 @@
 		// Requete http
 		protected $requete;
 		
-		// Objet de la session
+		// Objet pour la gestion de la session.
 		protected $session;
+		
+		// Objet pour la gestion des formulaires.
+		protected $form;
 		
 		// Action à exécuter
 		protected $action;
@@ -36,6 +39,11 @@
 		// Initialise l'attribut session
 		public function setSession(Session $session) {
 			$this->session = $session;
+		}
+		
+		// Initialise l'attribut form.
+		public function setForm() {
+			$this->form = new Form;
 		}
 		
 		public function setControleur($controleur) {
@@ -64,12 +72,12 @@
 		
 		// Redirige vers une autre page
 		protected function rediriger($controleur = null, $action = null) {
-			if(is_null($controleur)) {
+			if(is_null($controleur))
 				header("Location: " . BASEHREF);
-			}
-			else {
+			else
 				header("Location: " . BASEHREF . $controleur . "/" . $action);
-			}
+			
+			exit;
 		}
 		
 		// Méthode abstraite correspondant à laction par defaut
