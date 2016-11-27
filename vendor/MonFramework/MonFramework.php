@@ -27,7 +27,7 @@
 		public static function chargement() {
 			try {
 				$session = new Session;
-				$requete = new Requete(array_merge($_GET, $_POST));
+				$requete = new Requete($_GET);
 				$routeur = new Routeur;
 				
 				$controleur = $routeur->getControleur($requete);
