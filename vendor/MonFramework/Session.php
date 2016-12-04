@@ -18,6 +18,7 @@ class Session {
 	
 	// Démarre ou restaure un session.
 	public function __construct() {
+		session_set_cookie_params(0, BASEHREF, "", false, true);
 		session_start();
 	}
 	
@@ -50,6 +51,12 @@ class Session {
 			return $_SESSION[$key];
 		
 		return $returnValue;
+	}
+	
+	// Supprime une variable de session.
+	public function _unset($key) {
+		if($this->_isset($key))
+			unset($_SESSION[$key]);
 	}
 	
 }
