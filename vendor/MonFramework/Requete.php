@@ -1,46 +1,45 @@
 <?php
 
-	/*
-	*
-	* Requete.php
-	* @Auteur : Christophe Dufour
-	*
-	* Classe modélisant une requête HTTP entrante
-	*
-	*/
+/*
+*
+* Requete.php
+* @Auteur : Christophe Dufour
+*
+* Classe modélisant une requête HTTP entrante.
+*
+*/
+
+// Espace de nom
+namespace MonFramework;
+
+/* Début de la classe. */
+class Requete {
 	
-	// Définition de l'espace de nom
-	namespace MonFramework;
-	
-	/* Définition de la classe. */
-	class Requete {
-		
-		// Tableau des paramètres d'un requête http
-		private $parametres;
-		
-		// Constructeur de classe
-		// Initialise l'attribut parametres
-		public function __construct($parametres) {
-			$this->setParametres($parametres);
-		}
-		
-		// Initialise l'attribut parametres
-		public function setParametres($parametres) {
-			$this->parametres = $parametres;
-		}
-		
-		// Renvoie true si un parametre existe dans le tableau des paramètres
-		public function existe($nom) {
-			return(isset($this->parametres[$nom]) && $this->parametres[$nom] != "");
-		}
-		
-		// Retourne la valeur d'un paramètre
-		public function get($nom) {
-			if($this->existe($nom))
-				return $this->parametres[$nom];
-			else
-				throw new \Exception("Parametre $nom absent de la requête.");
-		}
-		
+	// Teste si un élément du tableau $_GET existe.
+	// Renvoie true s'il existe, sinon false.
+	public function _isset($key) {
+		return isset($_GET[$key]);
 	}
-	/* Fin de la définition de la classe. */
+	
+	// Teste si un élément du tableau du *_GET est vide.
+	// Renvoie true s'il est vide, sinon false.
+	public function _empty($key) {
+		return empty($_GET[$key]);
+	}
+	
+	// Teste si un élément du tableau $_GET existe.
+	// Renvoie true s'il existe, sinon false.
+	public function existe($nom) {
+		return(isset($_GET[$nom]) && $_GET[$nom] != "");
+	}
+	
+	// Retourne la valeur d'un des éléments du tableau $_GET.
+	public function get($nom) {
+		if($this->existe($nom))
+			return $_GET[$nom];
+		
+		throw new \Exception("Parametre $nom absent de la requête.");
+	}
+	
+}
+/* Fin de la classe. */

@@ -13,7 +13,7 @@
 // Espace de nom.
 namespace MonFramework;
 
-/* Définition de la classe. */
+/* Début de la classe. */
 class Session {
 	
 	// Démarre ou restaure un session.
